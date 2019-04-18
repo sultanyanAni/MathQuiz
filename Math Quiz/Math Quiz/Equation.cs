@@ -8,7 +8,7 @@ namespace Math_Quiz
 {
     public class Equation
     {
-        public enum MathSymbol
+       enum MathSymbol
         {
             Add,
             Subtract,
@@ -21,6 +21,9 @@ namespace Math_Quiz
         int num2;
         Random gen;
         MathSymbol symbol;
+        /// <summary>
+        /// When a new equation is created, two random numbers are generated and a random symbol is generated. 
+        /// </summary>
         public Equation()
         {
             gen = new Random();
@@ -33,7 +36,10 @@ namespace Math_Quiz
             }
 
         }
-
+        /// <summary>
+        /// Creates a string of the randomly generated equation
+        /// </summary>
+        /// <returns>string of the randomly generated equation</returns>
         public string GetEquation()
         {
             string EquationSymbol = "";
@@ -55,6 +61,11 @@ namespace Math_Quiz
 
             return $"{num1} {EquationSymbol} {num2}";
         }
+
+        /// <summary>
+        /// Gets the answer to the randomly generated equation
+        /// </summary>
+        /// <returns>the answer to the randomly generated equation</returns>
         public int Answer()
         {
             int result = 0;
@@ -74,6 +85,7 @@ namespace Math_Quiz
                     break;
             }
 
+            return result;
         }
     }
 }
