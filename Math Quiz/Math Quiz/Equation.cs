@@ -8,7 +8,7 @@ namespace Math_Quiz
 {
     public class Equation
     {
-       enum MathSymbol
+        enum MathSymbol
         {
             Add,
             Subtract,
@@ -17,16 +17,17 @@ namespace Math_Quiz
 
         }
 
-        int num1;
-        int num2;
+        float num1;
+        float num2;
         Random gen;
         MathSymbol symbol;
+        //public bool isDivision => symbol == MathSymbol.Divide;
         /// <summary>
         /// When a new equation is created, two random numbers are generated and a random symbol is generated. 
         /// </summary>
-        public Equation()
+        public Equation(Random gen)
         {
-            gen = new Random();
+            this.gen = gen;
             num1 = gen.Next(21);
             symbol = (MathSymbol)gen.Next(4);
             num2 = gen.Next(21);
@@ -66,9 +67,9 @@ namespace Math_Quiz
         /// Gets the answer to the randomly generated equation
         /// </summary>
         /// <returns>the answer to the randomly generated equation</returns>
-        public int Answer()
+        public float Answer()
         {
-            int result = 0;
+            float result = 0;
             switch (symbol)
             {
                 case MathSymbol.Add:
@@ -88,5 +89,4 @@ namespace Math_Quiz
             return result;
         }
     }
-}
 }
