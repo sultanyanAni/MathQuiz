@@ -25,18 +25,22 @@ namespace Math_Quiz
         /// <summary>
         /// When a new equation is created, two random numbers are generated and a random symbol is generated. 
         /// </summary>
-        public Equation(Random gen)
+        public Equation(Random gen, int maxValue = 101)
         {
             this.gen = gen;
-            num1 = gen.Next(21);
+            num1 = gen.Next(maxValue);
             symbol = (MathSymbol)gen.Next(4);
-            num2 = gen.Next(21);
-            while (symbol == MathSymbol.Divide && num2 == 0)
+            num2 = gen.Next(maxValue);
+            //make sure that the result of the division is not a decimal and that there is no division by 0
+            while ((symbol == MathSymbol.Divide && num2 == 0 ) || num1 % num2 != 0)
             {
-                num2 = gen.Next(21);
+                num2 = gen.Next(maxValue);
             }
 
         }
+
+        
+
         /// <summary>
         /// Creates a string of the randomly generated equation
         /// </summary>

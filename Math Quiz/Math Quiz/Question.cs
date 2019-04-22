@@ -16,12 +16,15 @@ namespace Math_Quiz
         public int CorrectIndex;
         public float[] Answers;
         Random gen;
+
+
         public Question(Random gen, int numberOfAnswers = 4)
         {
             this.gen = gen;
             Equation = new Equation(gen);
             Answers = new float[numberOfAnswers];
         }
+
         /// <summary>
         /// fills the Answers array with random numbers and places the correct answer at a random index
         /// </summary>
@@ -45,7 +48,7 @@ namespace Math_Quiz
                     {
                         isValid = true;
                         ranNum = gen.Next((int)CorrectAnswer - 10, (int)CorrectAnswer + 10);
-                        //ranFloat = ranNum / 1000.0f;
+                       
                         for (int j = 0; j < Answers.Length; j++)
                         {
                             if (Answers[j] == ranNum)
@@ -53,7 +56,6 @@ namespace Math_Quiz
                                 isValid = false;
                             }
                         }
-
 
                     } while (isValid == false);
                     Answers[i] = ranNum;
